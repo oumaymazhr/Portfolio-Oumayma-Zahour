@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Portfolio - Expériences</title>
+    <style>
+        /* Styles de base */
+        :root {
+            --title-color: #221060;
+            --accent-color: #89b9f8;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: white;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            padding: 2rem 5%;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 100;
+        }
+        
+        h1 {
+            color: var(--title-color);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+        
+        h2 {
+            color: var(--title-color);
+            font-size: 2rem;
+            margin: 2rem 0 1.5rem;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: var(--accent-color);
+            border-radius: 50%;
+        }
+        
+        h3 {
+            color: var(--title-color);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        h3 span {
+            font-size: 1rem;
+            color: #666;
+            font-weight: normal;
+            margin-left: 15px;
+        }
+        
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: var(--title-color);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 70%;
+        }
+        
+        /* Contenu principal */
+        main {
+            padding: 2rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .intro-text {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 3rem;
+            font-style: italic;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .intro-text::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -10px;
+            font-size: 3rem;
+            color: var(--accent-color);
+            opacity: 0.3;
+        }
+        
+        /* Cartes d'expérience */
+        .experience-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(137, 185, 248, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--accent-color);
+        }
+        
+        .mission-title {
+            font-weight: bold;
+            margin: 1.5rem 0 0.5rem;
+            color: var(--title-color);
+        }
+        
+        .experience-card ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .experience-card li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+        
+        .experience-card li::before {
+            content: '•';
+            color: var(--accent-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        /* Compétences */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+        
+        .skill {
+            background: rgba(137, 185, 248, 0.1);
+            color: var(--title-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid var(--accent-color);
+        }
+        
+        /* Effets créatifs */
+        .creative-element {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(137, 185, 248, 0.1);
+            z-index: -1;
+        }
+        
+        .el-1 {
+            top: 50px;
+            right: 50px;
+        }
+        
+        .el-2 {
+            bottom: 100px;
+            left: -30px;
+            width: 150px;
+            height: 150px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+            
+            .experience-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="creative-element el-1"></div>
+    <div class="creative-element el-2"></div>
+    
+    <header>
+        <h1>Mes Expériences Professionnelles</h1>
+        <nav>
+            <ul>
+                <li><a href="Index.html">À propos</a></li>
+            <li><a href="Competences.html">Compétences</a></li>
+               <li><a href="test.html">Expériences</a></li>
+               <li><a href="Autres.html">Projets</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <p class="intro-text">Un parcours diversifié en communication, design et intelligence des données</p>
+        
+        <section>
+            <h2>Stages</h2>
+            
+            <div class="experience-card">
+                <h3>BFB expérience <span>4 semaines (avril - mai 2023)</span></h3>
+                
+                <p>BFB expérience est une association de tourisme, sport et loisirs à but non lucratif. Créée en 2021 par Monsieur Pigeard, cette association organise des évènements, des séjours, des activités pour permettre aux personnes en Nouvelle- Aquitaine de découvrir de nouvelles activités et de faire des rencontres.</p>
+                
+                <p>À travers cette association, ils souhaitent non seulement faciliter les rencontres, mais aussi proposer des expériences uniques aux membres. C'est dans cette démarche qu'ils ont tout d'abord créé, à la sortie du premier confinement il y a 5 ans, un club de rencontre sous le nom de "Big Fish Bordeaux", qui était initialement leur concept unique. Avec le temps, les ambitions de l'équipe ont grandi et c'est donc en 2021 que BFB Expérience voit le jour.</p>
+                
+                <div class="mission-title">Missions :</div>
+                <ul>
+                    <li>Création de visuels, graphismes et publications pour les réseaux sociaux (Instagram, Facebook)</li>
+                    <li>Refonte du site web sur Ionos</li>
+                    <li>Restauration du logo sur Illustrator</li>
+                </ul>
+                
+                <div class="skills">
+                    <span class="skill">Design graphique</span>
+                    <span class="skill">Communication visuelle</span>
+                    <span class="skill">Adobe Illustrator</span>
+                    <span class="skill">Gestion de contenu</span>
+                </div>
+            </div>
+            
+            <div class="experience-card">
+                <h3>Tressaf Hairstyle <span>8 semaines (avril - juin 2024)</span></h3>
+                
+                <p>Tressaf est une marque de cosmétiques capillaires spécialisée dans les produits pour cheveux texturés, présente à Bordeaux, Paris et Abidjan. Fondée par Ange Kouadio en 2019, elle propose des soins 100 % naturels, fabriqués en France, adaptés aux besoins spécifiques des cheveux bouclés, frisés et crépus.</p>
+                
+                <div class="mission-title">Missions :</div>
+                <ul>
+                    <li>Création de contenus pour les réseaux sociaux (Facebook, Instagram, LinkedIn)</li>
+                    <li>Recherche d'information et veille concurrentielle</li>
+                    <li>Développement de stratégies de communication</li>
+                    <li>Promotion d'événements et construction de campagnes de communication</li>
+                </ul>
+                
+                <div class="skills">
+                    <span class="skill">Content Management</span>
+                    <span class="skill">Stratégie digitale</span>
+                    <span class="skill">Community Management</span>
+                    <span class="skill">Benchmark</span>
+                    <span class="skill">Event Management</span>
+                </div>
+            </div>
+            
+            <div class="experience-card">
+                <h3>Le Bourgeon - Cabinet spécialisé dans le handicap invisible <span>10 semaines (avril - juillet 2025)</span></h3>
+                
+                <p>Spécialisé dans le handicap invisible, le cabinet propose des bilans de compétences, des formations, des sensibilisations et du coaching en insertion professionnelle, pour les personnes en situation de handicap et pour les entreprises qui souhaitent être sensibilisé à ce sujet. Leur mission est d'aider chaque personne à construire un projet professionnel qui lui ressemble, tout en valorisant l'inclusion et la diversité en milieu de travail.</p>
+                
+                <div class="mission-title">Missions :</div>
+                <ul>
+                    <li>Création de visuels, graphismes et publications pour Linkedin</li>
+                    <li>Conception de la fresque du handicap</li>
+                    <li>Création de la charte graphique du cabinet</li>
+                    <li>Redesign et mise à jour du site web</li>
+                    <li>Amélioration de l'ergonomie et de l'accessibilité du site</li>
+                </ul>
+                
+                <div class="skills">
+                    <span class="skill">Design graphique</span>
+                    <span class="skill">Communication digitale</span>
+                    <span class="skill">Accessibilité web</span>
+                    <span class="skill">Identité visuelle</span>
+                    <span class="skill">UX Design</span>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Portfolio - Compétences</title>
+    <style>
+        /* Styles de base */
+        :root {
+            --title-color: #221060;
+            --accent-color: #89b9f8;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: white;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            padding: 2rem 5%;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 100;
+        }
+        
+        h1 {
+            color: var(--title-color);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+        
+        h2 {
+            color: var(--title-color);
+            font-size: 2rem;
+            margin: 2rem 0 1.5rem;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: var(--accent-color);
+            border-radius: 50%;
+        }
+        
+        h3 {
+            color: var(--title-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent-color);
+        }
+        
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: var(--title-color);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 70%;
+        }
+        
+        /* Contenu principal */
+        main {
+            padding: 2rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Conteneur des compétences */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .skill-category {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(137, 185, 248, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+        
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .skill-name span {
+            color: var(--title-color);
+            font-weight: bold;
+        }
+        
+        .skill-bar {
+            height: 8px;
+            background: rgba(137, 185, 248, 0.2);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .skill-level {
+            height: 100%;
+            background: var(--accent-color);
+            border-radius: 4px;
+            transition: width 1s ease-in-out;
+        }
+        
+        /* Effets créatifs */
+        .creative-element {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(137, 185, 248, 0.1);
+            z-index: -1;
+        }
+        
+        .el-1 {
+            top: 50px;
+            right: 50px;
+        }
+        
+        .el-2 {
+            bottom: 100px;
+            left: -30px;
+            width: 150px;
+            height: 150px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+            
+            .skill-category {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="creative-element el-1"></div>
+    <div class="creative-element el-2"></div>
+    
+    <header>
+        <h1>Mes Compétences</h1>
+        <nav>
+            <ul>
+                <li><a href="Index.html">À propos</a></li>
+                <li><a href="Competences.html">Compétences</a></li>
+                <li><a href="test.html">Expériences</a></li>
+                <li><a href="Autres.html">Projets</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section>
+            <h2>Compétences Techniques</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Design Graphique</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">Adobe Photoshop</div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">Adobe Illustrator </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">Adobe InDesign </div>
+                    </div>
+                </div>
+            </div>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Soft Skills</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">Travail d'équipe </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">Créativité </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">Gestion de projet </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">Esprit d’analyse </div>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Communication Digitale</h3>
+                <div class="skill-item">
+                    <div class="skill-name">Stratégie réseaux sociaux </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Community Management </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Création de contenu </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Rédaction web </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Notions de référencement (SEO) </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Stratégie de diffusion </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Veille</div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

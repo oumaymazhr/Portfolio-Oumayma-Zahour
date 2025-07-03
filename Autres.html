@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Portfolio - Projets</title>
+    <style>
+        /* Styles de base */
+        :root {
+            --title-color: #221060;
+            --accent-color: #89b9f8;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: white;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+        
+        header {
+            padding: 2rem 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 100;
+        }
+        
+        h1 {
+            color: var(--title-color);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+        
+        h2 {
+            color: var(--title-color);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: var(--accent-color);
+            border-radius: 50%;
+        }
+        
+        h3 {
+            color: var(--title-color);
+            font-size: 1.3rem;
+            margin: 1.5rem 0 0.8rem;
+            position: relative;
+            padding-left: 12px;
+        }
+        
+        h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent-color);
+        }
+        
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: var(--title-color);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 70%;
+        }
+        
+        /* Contenu principal */
+        main {
+            padding: 2rem 0;
+        }
+        
+        /* Cartes de projet */
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(137, 185, 248, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--accent-color);
+        }
+        
+        .project-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .project-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .project-images {
+            flex: 1;
+            min-width: 800px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .project-images img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .project-images img:hover {
+            transform: scale(1.02);
+        }
+        
+        /* Listes */
+        ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+        
+        li::before {
+            content: '•';
+            color: var(--accent-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        /* Compétences */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+        
+        .skill {
+            background: rgba(137, 185, 248, 0.1);
+            color: var(--title-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid var(--accent-color);
+        }
+        
+        /* Effets créatifs */
+        .creative-element {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(137, 185, 248, 0.1);
+            z-index: -1;
+        }
+        
+        .el-1 {
+            top: 50px;
+            right: 50px;
+        }
+        
+        .el-2 {
+            bottom: 100px;
+            left: -30px;
+            width: 150px;
+            height: 150px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+            
+            .project-content {
+                flex-direction: column;
+            }
+            
+            .project-text, .project-images {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="creative-element el-1"></div>
+    <div class="creative-element el-2"></div>
+    
+    <header>
+        <div class="container">
+            <h1>Mes projets</h1>
+            <nav>
+                <ul>
+                    <li><a href="Index.html">À propos</a></li>
+                    <li><a href="Competences.html">Compétences</a></li>
+                    <li><a href="test.html">Expériences</a></li>
+                    <li><a href="Autres.html">Projets</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="projects">
+        <div class="container">
+            <!-- Projet CPPQC -->
+            <article class="project-card">
+                <h2>CPPQC - Média sur la sexualité</h2>
+                <div class="project-content">
+                    <div class="project-text">
+                        <p>Dans le cadre de ce projet, j'ai conçu et géré du contenu sur Instagram en adoptant une approche éducative et inclusive. L'objectif était d'informer et de sensibiliser un large public à travers des visuels engageants, des infographies accessibles et des publications favorisant l'échange et la discussion.</p>
+                        
+                        <h3>Compétences mobilisées :</h3>
+                        <ul>
+                            <li>Création de contenu éducatif</li>
+                            <li>Gestion de communauté</li>
+                            <li>Design d'infographies</li>
+                            <li>Stratégie de contenu pour réseaux sociaux</li>
+                        </ul>
+                        
+                        <div class="skills">
+                            <span class="skill">Community Management</span>
+                            <span class="skill">Design Graphique</span>
+                            <span class="skill">Stratégie de contenu</span>
+                            <span class="skill">Sensibilisation</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-images">
+                        <!-- Remplacez ces images -->
+                        <img src="Images/CPPQC 2.jpg" alt="Bannière du projet CPPQC">
+                        <img src="Images/CPPQC 1.jpg" alt="Exemple de publication CPPQC">
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Projet Tressaf -->
+            <article class="project-card">
+                <h2>Exposition « Inclusivité numérique, un droit pour tous »</h2>
+                <div class="project-content">
+                    <div class="project-text">
+                        <p>L’exposition « Inclusivité numérique, un droit pour tous », présentée le 3 avril 2025 à l’IUT Bordeaux Montaigne, proposait une exploration visuelle des enjeux d’accessibilité et d’inclusion dans le monde digital. À travers une série d’affiches mêlant données et création graphique, elle mettait en lumière les inégalités d’accès aux technologies, les biais algorithmiques et les initiatives en faveur d’un numérique plus équitable. Dans le cadre de cette exposition, j’ai conçu l’identité visuelle de l’événement, en réalisant le logo, l’affiche, les flyers, ainsi qu’une charte graphique complète destinée à harmoniser l’ensemble des supports de communication.</p>
+                        
+                        <h3>Compétences mobilisées :</h3>
+                        <ul>
+                            <li>Développement de l'identité visuelle</li>
+                            <li>Travail collaboratif</li>
+                            <li>Graphisme</li>
+                        </ul>
+                        
+                        <div class="skills">
+                            <span class="skill">Content Creation</span>
+                            <span class="skill">Illustrator</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-images">
+                        <!-- Remplacez ces images -->
+                        <img src="Images/Data1.jpg" alt="Identité visuelle Tressaf">
+                    </div>
+                </div>
+            </article>
+            
+        
+            <article class="project-card">
+                <h2>Mook 776 - Édition 2024 : La révolution numérique des années 2000</h2>
+                <div class="project-content">
+                    <div class="project-text">
+                        <p>J'ai participé à la réalisation du Mook 776, consacré aux répercussions sociales de l'informatique, en contribuant à la rédaction d'articles ainsi qu'à la conception graphique. Mon implication s'est étendue à la mise en page, à l'illustration et à la création d'un contenu éditorial cohérent et engageant, alliant fond et forme de manière structurée.</p>
+                        
+                        <h3>Compétences mobilisées :</h3>
+                        <ul>
+                            <li>Rédaction journalistique et éditoriale</li>
+                            <li>Conception graphique</li>
+                            <li>Gestion de projet</li>
+                            <li>Travail collaboratif</li>
+                        </ul>
+                        
+                        <div class="skills">
+                            <span class="skill">Illustrator</span>
+                            <span class="skill">InDesign</span>
+                            <span class="skill">Design Thinking</span>
+                        </div>
+                    </div>
+                    
+                    <style>
+                        .halloween-carousel-container {
+                                   position: relative;
+                                   max-width: 600px;
+                                   margin: 30px auto;
+                                   overflow: hidden;
+                                   border-radius: 10px;
+                               }
+                             
+                               .halloween-carousel-track {
+                                   display: flex;
+                                   transition: transform 0.5s ease;
+                               }
+                             
+                               .halloween-slide {
+                                   min-width: 100%;
+                               }
+                             
+                               .halloween-slide img {
+                                   width: 350px;
+                                   height: 500px;
+                                   object-fit: cover;
+                                   border-radius: 10px;
+                               }
+                            
+                             
+                               .halloween-nav {
+                                   margin: 20px 0;
+                               }
+                             
+                               .halloween-button {
+                                   margin: 0 10px;
+                                   padding: 10px 20px;
+                                   font-size: 16px;
+                                   cursor: pointer;
+                                   background-color: #221060;
+                                   color: white;
+                                   border: none;
+                                   border-radius: 5px;
+                               }
+                        </style>
+                        
+                        <div class="halloween-carousel-container">
+                                   <div class="halloween-carousel-track">
+                                       <div class="halloween-slide">
+                                           <img src="Images/mook776-1.jpg" alt="Halloween - Photo 1">
+                                       </div>
+
+                                       <div class="halloween-slide">
+                                           <img src="Images/mook776-2.jpg" alt="Halloween - Photo 2">
+                                       </div>
+
+                                       <div class="halloween-slide">
+                                           <img src="Images/mook776-3.jpg" alt="Halloween - Photo 3">
+                                       </div>
+
+                                       <div class="halloween-slide">
+                                           <img src="Images/mook776-4.jpg" alt="Halloween - Photo 4">
+                                       </div>
+
+                                       <div class="halloween-slide">
+                                        <img src="Images/mook776-5.jpg" alt="Halloween - Photo 4">
+                                    </div>
+                                        
+                                        <div class="halloween-slide">
+                                            <img src="Images/mook776-6.jpg" alt="Halloween - Photo 1">
+                                        </div>
+
+                                        <div class="halloween-slide">
+                                            <img src="Images/mook776-7.jpg" alt="Halloween - Photo 1">
+                                        </div>
+
+                                        <div class="halloween-slide">
+                                            <img src="Images/mook776-8.jpg" alt="Halloween - Photo 1">
+                                        </div>
+
+                                        <div class="halloween-slide">
+                                            <img src="Images/mook776-9.jpg" alt="Halloween - Photo 1">
+                                        </div>
+
+                                        <div class="halloween-slide">
+                                            <img src="Images/mook776-10.jpg" alt="Halloween - Photo 1">
+                                        </div>
+
+                                        <div class="halloween-slide">
+                                            <img src="Images/mook776-11.jpg" alt="Halloween - Photo 1">
+                                        </div>
+
+                                        <div class="halloween-slide">
+                                            <img src="Images/mook776-12.jpg" alt="Halloween - Photo 1">
+                                        </div>
+
+                                        <div class="halloween-slide">
+                                            <img src="Images/mook776-13.jpg" alt="Halloween - Photo 1">
+                                        </div>
+
+                                        <div class="halloween-slide">
+                                            <img src="Images/mook776-14.jpg" alt="Halloween - Photo 1">
+                                        </div>
+
+                                        <div class="halloween-slide">
+                                            <img src="Images/mook776-15.jpg" alt="Halloween - Photo 1">
+                                        </div>
+
+                                        <div class="halloween-slide">
+                                            <img src="Images/mook776-16.jpg" alt="Halloween - Photo 1">
+                                        </div>
+
+                                        <div class="halloween-slide">
+                                            <img src="Images/mook776-17.jpg" alt="Halloween - Photo 1">
+                                        </div>
+
+                                        <div class="halloween-slide">
+                                            <img src="Images/mook776-18.jpg" alt="Halloween - Photo 1">
+                                        </div>
+
+                                    </div>
+                                    <div class="halloween-nav">
+                                        <button class="halloween-button" onclick="prevSlide()">◀ Précédent</button>
+                                        <button class="halloween-button" onclick="nextSlide()">Suivant ▶</button>
+                                    </div>
+                                   </div>
+                                   
+                               </div>
+                               <script>
+                                // Configuration du carrousel Halloween
+                                const track = document.querySelector('.halloween-carousel-track');
+                                const slides = document.querySelectorAll('.halloween-slide');
+                                let currentIndex = 0;
+                               
+                                // Initialisation
+                                updateCarousel();
+                               
+                                function nextSlide() {
+                                    currentIndex = (currentIndex + 1) % slides.length;
+                                    updateCarousel();
+                                }
+                               
+                                function prevSlide() {
+                                    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                                    updateCarousel();
+                                }
+                               
+                                function updateCarousel() {
+                                    const slideWidth = slides[0].offsetWidth;
+                                    track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+                                }
+                               
+                    
+                            </script>
+                </div>
+            </article>
+        </div>
+    </main>
+</body>
+</html>

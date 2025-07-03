@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Oumayma Zahour - À propos</title>
+    <style>
+        /* Styles de base */
+        :root {
+            --title-color: #221060;
+            --accent-color: #89b9f8;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: white;
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            padding: 2rem 5%;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 100;
+        }
+        
+        h1 {
+            color: var(--title-color);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+        
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: var(--title-color);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 70%;
+        }
+        
+        /* Contenu principal */
+        main {
+            padding: 2rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .about {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            width: 100%;
+        }
+        
+        .about img {
+            width: 800px;
+            height: 500px;
+            border-radius: 3%;
+            object-fit: cover;
+            border: 5px solid var(--accent-color);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Carte CV */
+        .cv-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(137, 185, 248, 0.3);
+            text-align: center;
+            position: relative;
+        }
+        
+        .cv-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--accent-color);
+        }
+        
+        .cv-card p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .cv-link {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent-color);
+            margin-top: 1rem;
+        }
+        
+        .cv-link:hover {
+            background: white;
+            color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(137, 185, 248, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--title-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: auto;
+        }
+        
+        /* Effets créatifs */
+        .creative-element {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(137, 185, 248, 0.1);
+            z-index: -1;
+        }
+        
+        .el-1 {
+            top: 150px;
+            right: 50px;
+        }
+        
+        .el-2 {
+            bottom: 100px;
+            left: -30px;
+            width: 150px;
+            height: 150px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+            
+            .about img {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .cv-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="creative-element el-1"></div>
+    <div class="creative-element el-2"></div>
+    
+    <header>
+        <h1>Portfolio Oumayma Zahour</h1>
+        <nav>
+            <ul>
+                <li><a href="Index.html">À propos</a></li>
+                <li><a href="Competences.html">Compétences</a></li>
+                <li><a href="test.html">Expériences</a></li>
+                <li><a href="Autres.html">Projets</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="about">
+            <img src="Images/Oumayma.jpg" alt="Présentation Oumayma">
+        </section>
+ 
+        <section class="cv-card">
+            <p>Pour découvrir mon parcours professionnel et mes compétences, vous pouvez consulter mon CV.</p>
+            <p>Ce document présente mes formations, expériences et réalisations.</p>
+            <!-- Remplace ce lien par ton CV -->
+            <a href="Documents/CV-Oumayma-Zahour.pdf" download class="cv-link">Télécharger mon CV</a>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 - Portfolio Oumayma Zahour</p>
+    </footer>
+</body>
+</html>
